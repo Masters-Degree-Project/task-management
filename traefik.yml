@@ -5,6 +5,11 @@ http:
       service: task-service
       entryPoints:
         - web
+    comment-service-router:
+      rule: "Header(`X-Service`, `comment-service`)"
+      service: comment-service
+      entryPoints:
+        - web
 
     dashboard-router:
       rule: "PathPrefix(`/dashboard`)"
@@ -17,5 +22,9 @@ http:
       loadBalancer:
         servers:
           - url: "http://127.0.0.1:6061"
+    comment-service:
+      loadBalancer:
+        servers:
+          - url: "http://127.0.0.1:6060"
   
   
