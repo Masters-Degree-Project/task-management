@@ -17,6 +17,7 @@ providers:
 
   consulCatalog:
     defaultRule: "Header(`X-Service`, `{{ .Name }}`)"
+    exposedByDefault: true
     endpoints:
       - "consul:8500"
     rootKey: "traefik"
