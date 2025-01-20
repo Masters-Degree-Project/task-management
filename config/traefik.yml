@@ -20,7 +20,6 @@ providers:
     exposedByDefault: true
     endpoint:
       address: "consul:8500"
-    rootKey: "traefik"
 
 log:
   level: INFO
