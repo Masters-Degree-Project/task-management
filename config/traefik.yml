@@ -15,7 +15,8 @@ providers:
     watch: true
     network: traefik-network
 
-  consul:
+  consulCatalog:
+    defaultRule: "Header(`X-Service`, `{{ .Name }}`)"
     endpoints:
       - "consul:8500"
     rootKey: "traefik"
