@@ -19,7 +19,7 @@ providers:
     endpoints:
       - "consul:8500"
     rootKey: "traefik"
-    refreshInterval: "30s"
+    refresh: 30s
 
 log:
   level: INFO
