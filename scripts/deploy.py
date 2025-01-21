@@ -126,6 +126,14 @@ def service_env_setup(ip_address, repo_name, repo_path, service_index):
     except Exception as e:
         print(f"Error setting up environment for {repo_name}: {str(e)}")
 
+def build_service(repo_name, repo_path):
+    print(f"\nBuilding {repo_name}...")
+    try:
+        subprocess.run(['docker', 'compose', '-f', os.path.join(repo_path, 'docker-compose.yml'), 'up', '--build', '-d'], check=True)
+        print(f"Successfully built and started {repo_name}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error building {repo_name}: {str(e)}")
+
 def main():
     # Get and display IP address
     ip_address = get_ip_address()
@@ -137,6 +145,10 @@ def main():
     print("\nCloned repositories:")
     for index, (repo_name, repo_path) in enumerate(repo_paths.items()):
         service_env_setup(ip_address, repo_name, repo_path, index)
+    
+    print("\nBuilding and starting services...")
+    for repo_name, repo_path in repo_paths.items():
+        build_service(repo_name, repo_path)
 
     
 if __name__ == "__main__":
