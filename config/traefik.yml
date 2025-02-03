@@ -9,6 +9,10 @@ entryPoints:
     address: ":443"
 
 providers:
+  file:
+    directory: "./middlewares.yml"
+    watch: true
+
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
@@ -28,23 +32,3 @@ accessLog: {}
 
 metrics:
   prometheus: {}
-
-http:
-  middlewares:
-    corsMiddleware:
-      headers:
-        accessControlAllowOriginList:
-          - "*"
-        accessControlAllowMethods:
-          - "GET"
-          - "OPTIONS"
-          - "POST"
-          - "PUT"
-          - "DELETE"
-        accessControlAllowHeaders:
-          - "Authorization"
-          - "Content-Type"
-        accessControlExposeHeaders:
-          - "Authorization"
-        accessControlMaxAge: 100
-        addVaryHeader: true
