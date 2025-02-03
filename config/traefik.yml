@@ -28,3 +28,23 @@ accessLog: {}
 
 metrics:
   prometheus: {}
+
+http:
+  middlewares:
+    corsMiddleware:
+      headers:
+        accessControlAllowOriginList:
+          - "*"
+        accessControlAllowMethods:
+          - "GET"
+          - "OPTIONS"
+          - "POST"
+          - "PUT"
+          - "DELETE"
+        accessControlAllowHeaders:
+          - "Authorization"
+          - "Content-Type"
+        accessControlExposeHeaders:
+          - "Authorization"
+        accessControlMaxAge: 100
+        addVaryHeader: true
