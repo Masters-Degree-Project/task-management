@@ -10,7 +10,7 @@ entryPoints:
 
 providers:
   file:
-    directory: "./middlewares.yml"
+    directory: "./providers"
     watch: true
 
   docker:
